@@ -1,0 +1,1438 @@
+body {
+
+  -webkit-box-sizing: border-box;
+
+  box-sizing: border-box;
+
+}
+
+/*禁止文本缩放 字体设置  取消touch高亮效果*/
+
+html {
+
+  width: 100%;
+
+  height: 100%;
+
+  margin: 0px;
+
+  padding: 0px;
+
+  -webkit-text-size-adjust: 100%;
+
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  background: transparent;
+
+
+}
+
+body {
+
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  color: #333;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body a {
+  font-size: 14px;
+  color: #666;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+sumary {
+
+  margin: 0;
+
+  padding: 0;
+  -webkit-box-sizing: border-box;
+
+  box-sizing: border-box;
+}
+
+/*清除输入框内阴影*/
+
+input,
+select,
+textarea {
+
+  border: 0;
+
+  -webkit-appearance: none;
+
+  appearance: none;
+
+}
+
+ol,
+ul {
+
+  list-style: none;
+
+}
+
+/*//禁止选中文本内容*/
+
+*:not(input) {
+  -webkit-user-select: none;
+}
+
+*:not(select) {
+  -webkit-user-select: none;
+}
+
+*:not(textarea) {
+
+  -webkit-user-select: none;
+
+}
+
+/*禁用长按页面时的弹出菜单(iOS下有效) ,img和a标签都要加*/
+
+img,
+a {
+
+  -webkit-touch-callout: none;
+
+}
+
+a,
+a:active,
+a:hover {
+
+  text-decoration: none;
+
+}
+
+/*去掉点击链接和文本框对象时默认的灰色半透明覆盖层(iOS)或者虚框(Android)*/
+
+a,
+button,
+input,
+textarea {
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
+
+img {
+  display: block;
+  /*
+    解决移动端三像素问题
+    */
+}
+
+.border,
+.border-top,
+.border-right,
+.border-bottom,
+.border-left,
+.border-topbottom,
+.border-rightleft,
+.border-topleft,
+.border-rightbottom,
+.border-topright,
+.border-bottomleft {
+  position: relative;
+}
+
+.border::before,
+.border-top::before,
+.border-right::before,
+.border-bottom::before,
+.border-left::before,
+.border-topbottom::before,
+.border-topbottom::after,
+.border-rightleft::before,
+.border-rightleft::after,
+.border-topleft::before,
+.border-topleft::after,
+.border-rightbottom::before,
+.border-rightbottom::after,
+.border-topright::before,
+.border-topright::after,
+.border-bottomleft::before,
+.border-bottomleft::after {
+  content: "\0020";
+  overflow: hidden;
+  position: absolute;
+}
+
+/* border
+ * 因，边框是由伪元素区域遮盖在父级
+ * 故，子级若有交互，需要对子级设置
+ * 定位 及 z轴
+ */
+.border::before {
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #eaeaea;
+  transform-origin: 0 0;
+}
+
+.border-top::before,
+.border-bottom::before,
+.border-topbottom::before,
+.border-topbottom::after,
+.border-topleft::before,
+.border-rightbottom::after,
+.border-topright::before,
+.border-bottomleft::before {
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.border-right::before,
+.border-left::before,
+.border-rightleft::before,
+.border-rightleft::after,
+.border-topleft::after,
+.border-rightbottom::before,
+.border-topright::after,
+.border-bottomleft::after {
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.border-top::before,
+.border-topbottom::before,
+.border-topleft::before,
+.border-topright::before {
+  border-top: 1px solid #eaeaea;
+  transform-origin: 0 0;
+}
+
+.border-right::before,
+.border-rightbottom::before,
+.border-rightleft::before,
+.border-topright::after {
+  border-right: 1px solid #eaeaea;
+  transform-origin: 100% 0;
+}
+
+.border-bottom::before,
+.border-topbottom::after,
+.border-rightbottom::after,
+.border-bottomleft::before {
+  border-bottom: 1px solid #eaeaea;
+  transform-origin: 0 100%;
+}
+
+.border-left::before,
+.border-topleft::after,
+.border-rightleft::after,
+.border-bottomleft::after {
+  border-left: 1px solid #eaeaea;
+  transform-origin: 0 0;
+}
+
+.border-top::before,
+.border-topbottom::before,
+.border-topleft::before,
+.border-topright::before {
+  top: 0;
+}
+
+.border-right::before,
+.border-rightleft::after,
+.border-rightbottom::before,
+.border-topright::after {
+  right: 0;
+}
+
+.border-bottom::before,
+.border-topbottom::after,
+.border-rightbottom::after,
+.border-bottomleft::after {
+  bottom: 0;
+}
+
+.border-left::before,
+.border-rightleft::before,
+.border-topleft::after,
+.border-bottomleft::before {
+  left: 0;
+}
+
+@media (max--moz-device-pixel-ratio: 1.49),
+(-webkit-max-device-pixel-ratio: 1.49),
+(max-device-pixel-ratio: 1.49),
+(max-resolution: 143dpi),
+(max-resolution: 1.49dppx) {
+  /* 默认值，无需重置 */
+}
+
+@media (min--moz-device-pixel-ratio: 1.5) and (max--moz-device-pixel-ratio: 2.49),
+(-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 2.49),
+(min-device-pixel-ratio: 1.5) and (max-device-pixel-ratio: 2.49),
+(min-resolution: 144dpi) and (max-resolution: 239dpi),
+(min-resolution: 1.5dppx) and (max-resolution: 2.49dppx) {
+  .border::before {
+    width: 200%;
+    height: 200%;
+    transform: scale(.5);
+  }
+
+  .border-top::before,
+  .border-bottom::before,
+  .border-topbottom::before,
+  .border-topbottom::after,
+  .border-topleft::before,
+  .border-rightbottom::after,
+  .border-topright::before,
+  .border-bottomleft::before {
+    transform: scaleY(.5);
+  }
+
+  .border-right::before,
+  .border-left::before,
+  .border-rightleft::before,
+  .border-rightleft::after,
+  .border-topleft::after,
+  .border-rightbottom::before,
+  .border-topright::after,
+  .border-bottomleft::after {
+    transform: scaleX(.5);
+  }
+}
+
+@media (min--moz-device-pixel-ratio: 2.5),
+(-webkit-min-device-pixel-ratio: 2.5),
+(min-device-pixel-ratio: 2.5),
+(min-resolution: 240dpi),
+(min-resolution: 2.5dppx) {
+  .border::before {
+    width: 300%;
+    height: 300%;
+    transform: scale(.33333);
+  }
+
+  .border-top::before,
+  .border-bottom::before,
+  .border-topbottom::before,
+  .border-topbottom::after,
+  .border-topleft::before,
+  .border-rightbottom::after,
+  .border-topright::before,
+  .border-bottomleft::before {
+    transform: scaleY(.33333);
+  }
+
+  .border-right::before,
+  .border-left::before,
+  .border-rightleft::before,
+  .border-rightleft::after,
+  .border-topleft::after,
+  .border-rightbottom::before,
+  .border-topright::after,
+  .border-bottomleft::after {
+    transform: scaleX(.33333);
+  }
+}
+
+/* 页面切换效果 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 500ms;
+}
+
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.fade1-enter-active,
+.fade1-leave-active {
+  transition: all 500ms;
+}
+
+.fade1-enter,
+.fade1-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.fade2-enter-active,
+.fade1-leave-active {
+  transition: all 500ms;
+}
+
+.fade2-enter,
+.fade1-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* 页面切换效果 */
+/* 解决ui框架被felxible改变了大小 */
+#main .nav-menu input.el-input__inner,
+.el-cascader-menu .el-cascader-menu__item {
+  height: 60px;
+  font-size: 28px;
+  border: 0;
+  text-align: center;
+  /* input */
+}
+
+#main .search .el-select input.el-input__inner {
+  width: 200px;
+}
+
+#main .search input.el-input__inner {
+  height: 60px;
+  font-size: 24px;
+  padding: 0 20px;
+  line-height: 60px;
+}
+
+#main .search .el-icon-search {
+  font-size: 28px;
+}
+
+#main .nav-menu .el-cascader__label {
+  font-size: 28px;
+  line-height: 60px;
+  text-align: center;
+  /* input */
+}
+#main .headline .van-swipe {
+  width: 468px !important;
+  height: 76px !important;
+}
+
+#main .headline .van-swipe .van-swipe__track {
+  height: 76px !important;
+}
+
+#main .headline .van-swipe .van-swipe__track .van-swipe-item {
+  width: 100% !important;
+}
+
+#main .winning .van-swipe {
+  width: 100%;
+  height: 76px !important;
+}
+
+#main .winning .van-swipe .van-swipe__track {
+  height: 76px !important;
+  width: 100% !important;
+}
+
+#main .winning .van-swipe .van-swipe__track .van-swipe-item {
+  width: 100% !important;
+}
+
+#main .nav-menu .el-cascader {
+  width: 230px;
+  /* input */
+}
+
+#main .nav-menu .el-select {
+  width: 230px;
+  /* input */
+}
+
+#main .form .el-select {
+  width: 80%;
+  height: 80%;
+
+}
+
+#main .form .el-select .el-input__inner {
+  text-align: right;
+  border: 0;
+  outline: none;
+  font-size: 24px;
+  padding-right: 0;
+}
+
+#main .form .el-select__caret {
+  display: none;
+}
+
+.van-swipe__indicator {
+  width: 12px;
+  height: 12px;
+  margin-right: 12px;
+}
+
+.van-swipe__indicator--active {
+  background: #6AC5B6;
+}
+
+/* .swiper-container {
+  overflow: visible;
+} */
+
+.swiper-container .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  margin-right: 12px;
+}
+
+.swiper-container .swiper-pagination-bullet-active {
+  background: #6AC5B6;
+}
+
+.el-scrollbar__view .el-select-dropdown__item {
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  /* input */
+}
+
+.van-pull-refresh {
+  background: #fff;
+}
+
+.van-pull-refresh .van-list {
+  min-height: 400px;
+  background: #fff;
+}
+
+.van-pull-refresh .van-list .van-cell {
+  background: #eee;
+  /* 加载页面 */
+}
+
+.headline .van-pull-refresh .van-list .van-cell {
+  background: #fff;
+  /* 加载页面 */
+}
+
+.view .van-list .van-cell {
+  margin-bottom: 40px;
+}
+
+.van-toast div {
+  font-size: 28px;
+  /* toast */
+}
+
+.news .van-pull-refresh {
+  height: 567px;
+  background: #E9E9E9;
+}
+
+#btn .el-button {
+  height: 100%;
+  font-size: 30px;
+}
+
+#btn .el-button--default {
+  width: 210px;
+  border: 0;
+}
+
+#btn .el-button--danger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btn .el-button--danger span {
+  display: flex;
+  align-items: center;
+}
+
+#btn .el-button--danger span img {
+  margin-right: 42px;
+}
+
+.col-foot .van-button {
+  width: 90%;
+  height: 70%;
+  font-size: 28px;
+}
+
+.info-btn .el-button {
+  width: 328px;
+  height: 64px;
+  border-radius: 40px;
+  font-size: 28px;
+}
+
+#usedDetail .btn .van-button {
+  width: 300px;
+  height: 112px;
+  font-size: 30px;
+}
+
+#main .form .btn .el-button {
+  width: 672px;
+  height: 92px;
+  font-size: 32px;
+
+}
+
+/* 按钮 */
+/* 头部 */
+.van-nav-bar {
+  height: 100px;
+}
+
+.van-nav-bar div {
+  font-size: 32px;
+  color: #333;
+  line-height: 100px;
+}
+
+.van-nav-bar .van-icon {
+  color: #656565;
+}
+
+#head .van-uploader {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+/* 解决ui框架被felxible改变了大小 */
+/* 复选框style */
+.card .van-checkbox {
+  margin-right: 40px;
+}
+
+.van-checkbox .van-icon {
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+}
+
+.van-checkbox .van-checkbox__label {
+  font-size: 32px;
+  color: #333;
+}
+
+/* 导航菜单 */
+#main .el-tabs .el-tabs__nav {
+  width: 100%;
+  margin-left: 38px;
+}
+
+#main .el-tabs .el-tabs__header .el-tabs__nav-wrap .el-tabs__item {
+  height: 80px;
+  width: 30%;
+  font-size: 28px;
+  line-height: 80px;
+  text-align: center;
+}
+
+/* 上传图片样式 */
+#main .van-icon {
+  font-size:36px;
+}
+#main .van-checkbox .van-icon{
+  font-size:28px;
+  border:1px solid #aaa;
+}
+#main .photo .van-uploader .van-icon {
+  font-size: 70px;
+  color: #fff;
+}
+
+#main .imgList .van-uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 150px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #575757;
+  border-radius: 20px;
+  background: #efefef;
+}
+
+#main .imgList .van-icon {
+  font-size: 50px;
+}
+
+#main .imgList .van-icon-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+#main .van-radio__input {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#main .orders .van-radio{
+  height:60px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+#main .orders .van-radio__input {
+  display: inline-block;
+}
+#main .wraps .van-radio-group {
+  height: 104px;
+  line-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#main .wraps .van-radio-group .van-radio{
+  height: 104px;
+  line-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left:24px;
+}
+#main .upload .imgList .van-uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 132px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #575757;
+  border-radius: 20px;
+  background: #efefef;
+}
+
+#main .upload .imgList .van-icon {
+  font-size: 50px;
+}
+
+/* 表单插件样式 */
+#main .full-rent .item {
+  border: 1px solid #DADADA;
+  border-bottom-color: transparent;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 0;
+  position: relative;
+}
+#main .full-rent .el-input__inner {
+  border: 0;
+  font-size: 24px;
+}
+
+#main .full-rent .el-form-item__content {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+#main .full-rent .el-form-item__content p{
+  padding:0 16px;
+}
+#main .full-rent .com1 .el-form-item__content .el-form-item {
+  width: 156px;
+}
+#main .full-rent .item .van-radio-group {
+  height: 104px;
+  line-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#main .full-rent .item .van-radio-group .van-radio{
+  height: 104px;
+  line-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left:24px;
+}
+#main .full-rent .item .van-radio-group .van-radio .van-radio__label{
+  width: 110px;
+}
+#main .el-switch__core {
+  width: 100px !important;
+  height: 60px;
+  border-radius: 60px;
+}
+
+#main .el-switch__core::after {
+  width: 60px;
+  height: 60px;
+}
+
+#main .el-switch.is-checked .el-switch__core::after {
+  margin-left: -58px;
+}
+
+
+#main .form .list div .van-switch {
+  width: 104px !important;
+  height: 64px !important;
+  border-radius: 64px;
+  padding: 0 !important;
+  background-color: #eee;
+}
+
+#main .form .list div .van-switch--on {
+  background-color: #44db5e;
+}
+
+#main .full-rent .el-form-item__label {
+  font-size: 24px;
+  width:112px;
+  text-align: left;
+}
+
+#main .full-rent .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
+  content: "" !important;
+}
+
+#main .full-rent .el-form-item__error {
+  font-size: 20px;
+  top: 80%;
+}
+
+#main .full-rent .com span {
+  align-self: flex-end;
+  width: 80px;
+}
+
+#main .full-rent .el-textarea__inner {
+  border: 0;
+  font-size: 24px;
+  height: 66px;
+}
+
+#main .full-rent .el-select .el-input__inner {
+  text-align: left;
+}
+
+#main .full-rent .iconfont {
+  font-size: 36px;
+  color: #999;
+  margin-left: 20px;
+}
+
+#main .full-rent .el-switch {
+  position: absolute;
+  right: -380px;
+}
+
+#main .full-rent .el-radio-group {
+  display: flex;
+  align-items: center;
+
+}
+
+#main .el-radio .el-radio__label {
+  font-size: 24px;
+}
+
+#main .cards .el-radio .el-radio__label {
+  font-size: 0;
+}
+
+#main .el-radio .el-radio__inner {
+  width: 24px;
+  height: 24px;
+}
+
+#main .el-radio .el-radio__inner::after {
+  width: 8px;
+  height: 8px;
+}
+
+#main .full-rent .el-form-item__content .el-button {
+  width: 408px;
+  height: 90px;
+}
+#main .full-rent .btn{
+  border-top: 1px solid #dadada;
+}
+#main .full-rent .btn .el-form-item__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 52px 0;
+}
+
+#main .full-rent .el-button span {
+  font-size: 32px;
+
+}
+
+#main .form .el-checkbox-group {
+  padding: 0 38px;
+}
+
+#main .form .el-checkbox-group .el-checkbox {
+  margin-right: 30px;
+  margin-left: 0;
+  margin-bottom: 20px;
+  width: 128px;
+}
+
+#main .form .el-checkbox-group .el-checkbox:nth-child(4n) {
+  margin: 0;
+}
+
+#main .form .el-checkbox-group .el-checkbox .el-checkbox__inner::after {
+  width: 10px;
+  height: 10px;
+}
+
+#main .form .el-checkbox-group .el-checkbox .el-checkbox__inner {
+  width: 24px;
+  height: 24px;
+}
+
+#main .form .el-checkbox-group .el-checkbox .el-checkbox__label {
+  font-size: 24px;
+}
+
+/* 日期时间选选择器的样式 */
+#main .bottom .form .el-input__inner {
+  font-size: 24px;
+  height: 60px;
+  color: #959595;
+  padding-left: 40px;
+}
+
+#main .bottom .form .el-icon-time {
+  font-size: 24px;
+}
+
+.el-picker-panel .el-month-table td a {
+  font-size: 20px;
+  width: auto;
+  height: auto;
+}
+
+.el-picker-panel .el-year-table td .cell {
+  font-size: 20px;
+}
+
+.el-picker-panel .el-input__inner {
+  font-size: 24px;
+  height: 44px;
+}
+
+.el-picker-panel .el-date-picker__header-label {
+  font-size: 24px;
+}
+
+.el-picker-panel .el-picker-panel__content .el-date-table th {
+  font-size: 20px;
+}
+
+.el-picker-panel .el-picker-panel__content .el-date-table td {
+  font-size: 24px;
+}
+
+.el-picker-panel .el-picker-panel__content .el-date-table .current {
+  font-size: 20px;
+}
+
+.el-picker-panel .el-picker-panel__link-btn {
+  font-size: 24px;
+}
+
+/* 弹出框样式 */
+.van-dialog__content div {
+  display: none;
+}
+
+.van-dialog .van-button__text {
+  font-size: 32px;
+}
+
+.van-dialog__header {
+  font-size: 32px;
+  padding: 40px 0;
+}
+
+.van-dialog .van-button {
+  height: 80px;
+}
+
+/* 复选框样式 */
+.wrap .item .van-checkbox {
+  margin-left: 28px;
+}
+
+.wrap .item .van-checkbox .van-checkbox__label {
+  font-size: 30px;
+  color: #989898;
+}
+
+.wrap .item .van-checkbox .van-icon-success {
+  width: 28px;
+  height: 28px;
+}
+
+
+/* 列表样式 */
+.mall .van-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 28px 16px;
+  background: #fff;
+  justify-content: space-between;
+}
+
+.mall .van-list .van-cell {
+  padding: 0;
+  background: #fff;
+}
+
+/* 行动页样式 */
+#main .cart .van-goods-action .van-goods-action-mini-btn {
+  height: 92px;
+  font-size: 28px;
+}
+
+#main .cart .van-goods-action .van-goods-action-mini-btn .van-icon {
+  font-size: 28px;
+}
+
+#main .cart .van-goods-action .van-button {
+  height: 92px;
+}
+
+#main .cart .van-goods-action .van-button .van-button__text {
+  font-size: 28px;
+}
+
+/* 行动页样式 */
+#main .cart .van-sku-container .van-sku-header__img-wrap {
+  width: 160px;
+  height: 160px;
+  margin-top: -20px;
+}
+
+#main .cart .van-sku-container .van-sku-header__goods-info .van-sku__goods-name {
+  font-size: 32px;
+}
+
+#main .cart .van-sku-container .van-sku-header__goods-info .van-sku__goods-price {
+  margin-top: 10px;
+}
+
+#main .cart .van-sku-container .van-sku-header__goods-info .van-sku__goods-price span {
+  font-size: 24px;
+}
+
+#main .cart .van-sku-container .van-sku-body {
+  padding-left: 30px;
+}
+
+#main .cart .van-sku-container .van-sku-header {
+  height: 148px;
+}
+
+#main .cart .van-sku-container .van-sku-stepper-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main .cart .van-sku-container .van-sku-stepper-container .van-sku__stepper-title {
+  font-size: 24px;
+}
+
+#main .cart .van-sku-container .van-sku__stock {
+  font-size: 24px;
+}
+
+#main .cart .van-sku-container .van-sku-stepper-container .van-sku__stepper .van-stepper__input {
+  width: 66px;
+  height: 52px;
+  font-size: 24px;
+}
+
+.van-stepper__minus::before,
+.van-stepper__plus::before {
+  width: 18px;
+  height: 2px;
+}
+
+.van-stepper__plus::after {
+  width: 2px;
+  height: 18px;
+}
+
+#main .cart .van-sku-container .van-sku-actions .van-button {
+  height: 100px;
+}
+
+#main .cart .van-sku-container .van-sku-actions .van-button__text {
+  font-size: 30px;
+}
+
+.van-card {
+  background: #fff;
+  padding-bottom: 30px;
+  height: 172px;
+}
+
+.van-card .van-card__thumb {
+  margin-left: 20px;
+  height: 144px;
+  width: 144px;
+}
+
+.van-card .van-card__content {
+  font-size: 24px;
+  padding-left: 80px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.van-card .van-card__content .van-card__left .van-card__title {
+  font-size: 26px;
+  color: #6A6A6A;
+  overflow: auto;
+  line-height: 40px;
+  height: 40px;
+  max-height: 60px;
+}
+
+.van-card .van-card__content .van-card__left .van-card__desc {
+  color: #B5B5B5;
+  overflow: auto;
+  max-height: 60px;
+  line-height: 40px;
+}
+
+.van-card .van-card__content .van-card__right {
+  padding: 0;
+  text-align: left;
+}
+
+.van-card .van-card__content .van-card__right div {
+  color: #FF8051;
+}
+
+.van-card .van-card__content .van-card__right .van-card__num {
+  color: #6a6a6a;
+  height: 56px;
+  line-height: 40px;
+}
+
+.van-card .van-card__footer {
+  bottom: 50%;
+}
+
+.van-card .van-sku-stepper-stock {
+  margin: 0;
+}
+
+.van-card .van-card__footer .action .van-stepper__minus,
+.van-card .van-card__footer .action .van-stepper__plus {
+  width: 46px;
+  height: 46px;
+}
+
+.van-card .van-card__footer .action .van-stepper__input {
+  width: 46px;
+  height: 46px;
+  font-size: 24px;
+}
+
+.van-card .van-card__footer .action .van-icon::before {
+  font-size: 32px;
+  position: absolute;
+  bottom: -90px;
+  right: -40px;
+}
+
+.main .van-submit-bar {
+  bottom: 128px;
+}
+
+.van-submit-bar .van-submit-bar__bar {
+  height: 100px;
+  padding-left: 24px;
+
+}
+
+.van-submit-bar .van-submit-bar__bar .van-button {
+  height: 100%;
+  width: 220px;
+}
+
+.van-submit-bar .van-submit-bar__bar .van-button .van-button__text {
+  font-size: 30px;
+}
+
+.van-checkbox .van-checkbox__icon,
+.van-checkbox .van-checkbox__label {
+  line-height: 30px;
+}
+
+.van-submit-bar .van-checkbox .van-icon {
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+}
+
+.van-submit-bar span {
+  font-size: 28px;
+}
+
+.van-submit-bar .van-checkbox .van-checkbox__label {
+  font-size: 30px;
+}
+
+.main .van-submit-bar .van-submit-bar__text {
+  font-size: 30px;
+  text-align: right;
+}
+
+.van-submit-bar .van-submit-bar__text {
+  font-size: 30px;
+  text-align: left;
+}
+
+.order .van-card {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  padding-left: 110px;
+  box-sizing: content-box;
+}
+
+.order .card .van-checkbox{
+  margin-right: 0;
+}
+.van-swipe{
+  width:100%;
+}
+.likeYou .van-swipe .van-swipe-item {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 682px !important;
+}
+
+#main .swiper-wrap .van-swipe .van-swipe__indicators {
+  bottom: -20px;
+  z-index: 1000;
+}
+
+/* 快递步骤条插件样式 */
+#main .steps .van-steps {
+  padding-left: 40px;
+}
+
+#main .steps .van-steps .van-steps__items .van-step__title {
+  height: auto;
+  line-height: 36px;
+}
+
+#main .steps .van-steps .van-steps__items .van-step__title h3 {
+  font-size: 23px;
+  padding-left: 20px;
+}
+
+#main .steps .van-steps .van-steps__items .van-step__title p {
+  font-size: 24px;
+  padding-left: 20px;
+}
+
+#main .steps .van-steps .van-icon-checked {
+  font-size: 24px;
+  top: 24px;
+  left: -28px;
+}
+
+#main .steps .van-steps .van-step__circle {
+  width: 10px;
+  height: 10px;
+  top: 32px;
+  left: -20px;
+}
+
+.lottery .van-popup {
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+}
+
+.mine .van-popup {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.advertise .van-popup {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#main .posite .van-radio-group .van-cell-group .van-cell {
+  height: 80px;
+  line-height: 80px;
+  padding: 0 20px;
+}
+
+#main .posite .van-radio-group .van-cell-group .van-cell span {
+  font-size: 24px;
+}
+
+#main .posite .van-radio-group .van-cell-group .van-cell__value .van-radio__input {
+  height: 80px;
+}
+
+#main .posite .van-radio-group .van-cell-group .van-icon {
+  font-size: 32px;
+}
+
+#main .orders .cell .van-checkbox .van-checkbox__label {
+  font-size: 28px;
+}
+
+.van-picker .van-picker__toolbar {
+  height: 88px;
+  line-height: 88px;
+}
+
+.van-picker .van-picker__toolbar div {
+  font-size: 32px;
+}
+
+.van-picker__columns .van-picker-column__item {
+  font-size: 32px;
+}
+
+.item .van-radio-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.item .van-radio-group .van-radio__input {
+  font-size: 32px;
+}
+
+/* 编辑地址 */
+#main .arealist .van-cell-group .van-cell {
+  font-size: 28px;
+  padding: 20px 30px;
+  line-height: 48px;
+}
+
+#main .arealist .van-cell-group .van-address-edit-detail .van-cell {
+  padding: 0;
+}
+
+#main .arealist .van-cell-group .van-field .van-cell__title {
+  max-width: 240px;
+}
+
+#main .arealist .van-cell-group .van-switch-cell .van-switch {
+  background: #ccc;
+}
+
+#main .arealist .van-cell-group .van-switch-cell .van-switch--on {
+  background: #44db5e;
+}
+
+#main .arealist .van-address-edit__buttons .van-button {
+  height: 64px;
+  line-height: 64px;
+  font-size: 32px;
+}
+
+#main .van-list__loading-text {
+  font-size: 32px;
+}
+
+#main .van-pull-refresh__head {
+  font-size: 32px;
+}
+
+#main .van-password-input__security {
+  height: 80px;
+}
+
+#main .van-number-keyboard__body .van-key {
+  height: 80px;
+  line-height: 80px;
+  font-size: 28px;
+}
+
+#main .van-number-keyboard__body .van-key--delete {
+  background-size: auto 32px;
+  font-size: 0;
+}
+
+#main .menu-list .el-badge__content {
+  top: 16px;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  line-height: 24px;
+  padding: 4px;
+}
+.mall .list-wtap .van-list .van-cell{
+  width:348px;
+}

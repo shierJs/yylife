@@ -1,0 +1,19 @@
+export default {
+    //美食列表
+    foodList:[],
+    marketData:[],
+    JobData:[],
+    rentData:[],
+    text:"",
+    mallData:[],
+    cartData:[],
+    orderData:[],
+    releaseData:[],
+    tokens:null,
+    userData:null,
+    showSign:false,
+    payPwd:"",
+    areaList:[],
+    collect:true,
+    searchList:{},
+}

@@ -1,0 +1,80 @@
+#main .ivu-rate {
+  font-size: 12px;
+}
+
+#main .ivu-rate .ivu-rate-star {
+  margin-right: 4px;
+}
+#main .ivu-collapse>.ivu-collapse-item>.ivu-collapse-header{
+  font-size:14px;
+}
+#main .ivu-collapse>.ivu-collapse-item>.ivu-collapse-header:hover{
+  color:#b4a078;
+}
+#main .ivu-collapse-content>.ivu-collapse-content-box p{
+  font-size:14px;
+  line-height:24px;
+}
+
+#main .ivu-collapse-content>.ivu-collapse-content-box p:hover{
+  cursor: pointer;
+  color: #b4a078;
+  
+}
+ .model .ivu-input-wrapper{
+
+  margin-bottom:20px;
+}
+ .model .ivu-input-wrapper .ivu-input{
+  font-size:16px;
+  height:45px;
+}
+ .model .ivu-input-prefix,  .model .ivu-input-suffix{
+  line-height: 45px;
+}
+.model .ivu-input-icon{
+  line-height: 45px;
+  height:45px;
+}
+.model .ivu-input-group-append span{
+  font-size:14px;
+}
+ .model .ivu-input-group-append span:hover{
+  color:#b4a078;
+  cursor: pointer;
+}
+/* #head .model .ivu-input-wrapper .ivu-input:hover{
+  border-color:red;
+} */
+#main .wrapper .form .ivu-input{
+  width:auto;
+}
+#main .wrapper .form .ivu-input-wrapper{
+  width: auto;
+  float: left;
+  margin-right:20px;
+}
+#main .wrapper .form .ivu-form-item-error-tip{
+  top:30px;
+}
+#desc .w-e-text-container{
+  z-index:4 !important;
+}
+#head .content .ivu-input-group{
+  top:60px;
+}
+.wrapper .address-list .ivu-table-row td:first-child .ivu-table-cell span{
+  display: inline-block;
+  color:#b4a078;
+  padding:2px 4px;
+
+}
+#main .cart  .ivu-checkbox-wrapper{
+  font-size:14px;
+}
+#main .cart .ivu-checkbox{
+  margin-right:10px;
+}
+#main .wrapper .info .ivu-rate{
+  font-size:23px;
+}

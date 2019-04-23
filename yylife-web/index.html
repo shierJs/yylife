@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+  <title></title>
+  <!-- dns-prefetch写法 -->
+  <link rel="dns-prefetch" href="//www.yiyuanshenghuo.cn" rel="external nofollow" />
+  <link rel="shortcut icon" href="/static//img//favicon-20181204103301933.ico">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_930614_gr9ubj0ux1b.css">
+  <script src="http://at.alicdn.com/t/font_930614_gr9ubj0ux1b.js"></script>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    .upgrade-wrapper {
+      display: none;
+      margin-top: 200px;
+      font-family: "Microsoft Yahei", "微软雅黑", verdana;
+      color: #333;
+      box-sizing: border-box;
+    }
+
+    .upgrade-wrapper h2 {
+      text-align: center;
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .upgrade-wrapper .browser-list {
+      overflow: hidden;
+      width: 466px;
+      margin: auto auto 200px;
+      background-image: url('./static/img/icon/upgrade.jpg');
+      box-sizing: border-box;
+      padding: 0;
+    }
+
+    .upgrade-wrapper .browser-list .item {
+      float: left;
+      margin-right: 38px;
+      box-sizing: border-box;
+    }
+
+    .upgrade-wrapper .browser-list .last-sec {
+      float: left;
+      margin-right: 50px;
+      box-sizing: border-box;
+    }
+
+    .upgrade-wrapper .browser-list .last {
+      float: left;
+      margin-right: 0px;
+      box-sizing: border-box;
+    }
+
+    .upgrade-wrapper .browser-list .item a {
+      display: block;
+      width: 85px;
+      height: 101px;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    a,
+    a:active,
+    a:hover {
+      text-decoration: none;
+      outline: 0;
+    }
+
+  </style>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6696160509913810",
+      enable_page_level_ads: true
+    });
+  </script> -->
+</head>
+
+<body>
+  <div id="app"></div>
+  <div class="upgrade-wrapper">
+    <h2 class="title">你的浏览器版本太低，无法显示当前内容，请升级浏览器</h2>
+    <ul class="browser-list">
+      <li class="item">
+        <a href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads" target="_blank"
+          title="升级IE10">
+        </a>
+      </li>
+      <li class="item">
+        <a href="http://www.firefox.com.cn/" target="_blank" title="火狐">
+        </a>
+      </li>
+      <li class="item last-sec">
+        <a href="http://browser.360.cn/" target="_blank" title="360">
+        </a>
+      </li>
+      <li class="item last">
+        <a href="//www.google.cn/chrome/browser/desktop/index.html" target="_blank" title="chrome">
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var DEFAULT_VERSION = 8.0;
+    var ua = navigator.userAgent.toLowerCase();
+    var isIE = ua.indexOf("msie") > -1;
+    var safariVersion;
+    if (isIE) {
+      safariVersion = ua.match(/msie ([\d.]+)/)[1];
+    }
+    if (safariVersion <= DEFAULT_VERSION) {
+      if (!document.getElementsByClassName) { //如果浏览器不支持document.getElementsByClassName
+        document.getElementsByClassName = function (className, element) { //我们先将要写的方法封装成一个函数
+          var children = (element || document).getElementsByTagName('*'); //获取html中所有的DOM节点 
+          var elements = []; //用一个空数组存放要获取的class类名
+          for (var i = 0; i < children.length; i++) {
+            var child = children[i];
+            var classNames = child.className.split(' '); //将所有的class节点保存在一个数组之中
+            for (var j = 0; j < classNames.length; j++) { //遍历循环，将满足要求的class存入elements空数组中
+              if (classNames[j] == className) {
+                elements.push(child);
+                break;
+              }
+            }
+          }
+          return elements; //返回新的数组
+        };
+      }
+      var upgrade = document.getElementsByClassName("upgrade-wrapper");
+      upgrade[0].style.display = "block";
+    };
+
+  </script>
+  <!-- built files will be auto injected -->
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1275609994'%3E%3C/span%3E%3Cscript  style='display:none' src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1275609994' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+
+</html>
