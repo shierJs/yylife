@@ -274,7 +274,7 @@ export default {
       padding-top: 30px;
       padding-bottom: 24px;
       .foot-list {
-        width: 466px;
+        width: 390px;
         margin: 0 auto;
         li {
           float: left;

@@ -1436,3 +1436,10 @@ img {
 .mall .list-wtap .van-list .van-cell{
   width:348px;
 }
+.el-cascader-menus .el-cascader-menu{
+  min-width:250px;
+  height:852px;
+}
+.el-cascader-menus .el-cascader-menu .el-cascader-menu__item--extensible:after{
+  display: none;
+}

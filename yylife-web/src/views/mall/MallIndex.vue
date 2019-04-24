@@ -83,7 +83,11 @@
                     @click="enterDetail(item.goods_id)"
                   >
                     <div class="img">
-                      <img v-lazy="item.original_img" :key="item.original_img" :alt="item.goods_name">
+                      <img
+                        v-lazy="item.original_img"
+                        :key="item.original_img"
+                        :alt="item.goods_name"
+                      >
                     </div>
                     <div class="content">
                       <div class="badge-wrap">
@@ -117,7 +121,11 @@
                     @click="enterDetail(item.goods_id)"
                   >
                     <div class="img">
-                      <img v-lazy="item.original_img" :key="item.original_img" :alt="item.goods_name">
+                      <img
+                        v-lazy="item.original_img"
+                        :key="item.original_img"
+                        :alt="item.goods_name"
+                      >
                     </div>
                     <div class="content">
                       <div class="badge-wrap">
@@ -393,6 +401,7 @@ export default {
       $(window).scroll(function() {
         let iTop = $(document).scrollTop();
         iTop += 80;
+
         if (iTop > len) {
           $(".aside-nav").css({
             position: "fixed",
@@ -406,13 +415,28 @@ export default {
           });
         }
       });
+      window.onresize = resizeBannerImage; //当窗口改变宽度时执行此函数
+      let widths = $(window).width();
+      function resizeBannerImage() {
+        var winW = $(window).width();
+        if ($(window).width() > widths) {
+          console.log(winW);
+          $(".aside-nav").css({
+            left: 110 + (winW - widths)
+          });
+        } else {
+          $(".aside-nav").css({
+            left: widths - winW > 110 ? 0 : 110 - (widths - winW)
+          });
+        }
+      }
     }
   },
   created() {
     this.getCate();
     this.getAllList();
   },
-  mounted(){
+  mounted() {
     this.position();
   },
   components: {

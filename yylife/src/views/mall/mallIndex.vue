@@ -16,7 +16,7 @@
             @active-item-change="handleItemChange"
             @change="handleChange"
           ></el-cascader>
-          <el-select v-model="type" placeholder="请选择类型" @change="changeType">
+          <el-select v-model="type" placeholder="请选择属性" @change="changeType">
             <el-option
               v-for="(item,index) in typeList"
               :key="index"
@@ -177,15 +177,15 @@ export default {
                 children: "children"
               };
             } else {
-              let arr=[];
-              arr.push({
+              this.options[this.optionIndex].children=[];
+              this.options[this.optionIndex].children.push({
                 id: '',
                 name: "全部",
-              })
-              res.data.data.forEach(el=>{
-                arr.push(el);
               });
-              this.options[this.optionIndex].children=arr;
+              res.data.data.forEach(el=>{
+                this.options[this.optionIndex].children.push(el);
+              });
+              this.$forceUpdate();
             }
           } else {
             ;
@@ -249,6 +249,7 @@ export default {
     },
     handleItemChange(val) {
       this.pid = val[0];
+      console.log(val);
       for (let i = 0; i < this.options.length; i++) {
         if (this.options[i].id == this.pid) {
           this.optionIndex = i;
