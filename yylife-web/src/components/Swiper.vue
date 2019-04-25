@@ -35,7 +35,11 @@ export default {
   },
   methods: {
     jump(item) {
-      window.open(item.ad_link, '_blank');
+      if(item.ad_link == "" || item.ad_link == "javascript:;"){
+        return;
+      }else{
+        window.open(item.ad_link, '_blank');
+      }
     },
     getBanner(){
       let params={

@@ -362,6 +362,7 @@ export default {
             this.list = [];
             if (!res.data.data.length) {
               this.show = false;
+              this.showIndex = false;
               this.showCateChd = true;
             } else {
               this.list = res.data.data;

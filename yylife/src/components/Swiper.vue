@@ -58,6 +58,5 @@ export default {
 <style scoped lang="less">
 img {
   height: 290px;
-  width:100%;
 }
 </style>
