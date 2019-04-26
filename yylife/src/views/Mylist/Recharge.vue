@@ -170,6 +170,7 @@ export default {
       }
       input {
         text-align: right;
+        width:540px;
       }
     }
     .wrap {

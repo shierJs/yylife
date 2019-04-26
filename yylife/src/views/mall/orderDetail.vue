@@ -120,6 +120,8 @@ export default {
           this.order_status.forEach(el => {
             if (el.id == this.order_data.order_status) {
               this.status = el.name;
+            }else{
+              this.status = "订单已处理";
             }
           });
           this.show = true;

@@ -180,7 +180,7 @@ export default {
       cate: "",
       phoneShow: true,
       col: true,
-      copyUrl: window.location.href
+      copyUrl: "我在沂源生活上看到了这个职位,速戳详情"+window.location.href
     };
   },
   methods: {

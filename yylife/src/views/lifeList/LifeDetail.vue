@@ -114,7 +114,7 @@ export default {
       ],
       data: {},
       showNumber: true,
-      copyUrl: window.location.href
+      copyUrl: "贴心服务尽在沂源生活"+window.location.href
     };
   },
   mounted() {

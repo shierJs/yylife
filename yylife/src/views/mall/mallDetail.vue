@@ -110,7 +110,7 @@ import setInfoApi from "@/api/setInfo";
 export default {
   data() {
     return {
-      copyUrl: window.location.href,
+      copyUrl: "低价好物都在沂源生活"+window.location.href,
       goods_data: {},
       shop: {},
       title: "商品详情",

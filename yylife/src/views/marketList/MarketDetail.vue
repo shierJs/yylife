@@ -88,7 +88,7 @@ export default {
       used_id: 1,
       data: {},
       phone: true,
-      copyUrl: window.location.href
+      copyUrl: "闲置二手"+data.used_title+window.location.href
     };
   },
   mounted() {
@@ -112,6 +112,7 @@ export default {
               this.data.time = formateTime(
                 parseInt(this.data.publish_time) * 1000
               );
+              this.copyUrl = "闲置二手"+this.data.used_title+window.location.href
               this.show = true;
             }else{
               this.$router.push("/");

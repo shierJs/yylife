@@ -71,7 +71,7 @@ export default {
       imgSrc: [],
       data: {},
       img: "",
-      copyUrl: window.location.href
+      copyUrl:'沂源美食'+data.shop_name+'请戳'+window.location.href
     };
   },
   methods: {
@@ -117,6 +117,7 @@ export default {
                 return this.imgSrc.push(el.img);
               });
               this.img = this.imgSrc[0];
+              this.copyUrl='沂源美食'+this.data.shop_name+'请戳'+window.location.href;
               this.show = true;
             }
           } else {

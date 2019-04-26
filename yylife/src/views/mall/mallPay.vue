@@ -194,8 +194,6 @@ export default {
         right: 20px;
         width: 32px;
         height: 32px;
-        border: 1px solid #333;
-        border-radius: 16px;
         .iconfont {
           font-size: 36px;
           margin: 0;

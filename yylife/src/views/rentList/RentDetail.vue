@@ -139,7 +139,7 @@ export default {
       id: "",
       data: {},
       number: true,
-      copyUrl:window.location.href,
+      copyUrl:"我在沂源生活找到了一个好房，详情请看"+window.location.href,
       imgs:[],
     };
   },

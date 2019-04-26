@@ -271,6 +271,12 @@ export default {
   .list {
     background: #f4f4f4;
     overflow: hidden;
+    padding-top:90px;
+    position: absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
     .card {
       background: #fff;
       padding: 20px;

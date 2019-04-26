@@ -194,7 +194,7 @@ export default {
         }
       ],
       number: true,
-      copyUrl: window.location.href
+      copyUrl: "我看中了一套房，推荐给你"+window.location.href
     };
   },
   methods: {

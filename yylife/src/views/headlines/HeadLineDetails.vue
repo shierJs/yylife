@@ -31,7 +31,7 @@ export default {
     return {
       id: 0,
       data: "",
-      copyUrl: window.location.href
+      copyUrl: data.title+window.location.href+'更多精彩资讯内容尽在沂源生活'
     };
   },
   mounted() {
@@ -51,6 +51,7 @@ export default {
           if (res.data.code === 200) {
             if(res.data.data){
               this.data = res.data.data;
+              this.copyUrl = this.data.title+window.location.href+'更多精彩资讯内容尽在沂源生活';
             }
           }else{
             Toast(res.data.msg);
