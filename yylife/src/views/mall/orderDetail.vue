@@ -107,7 +107,27 @@ export default {
     };
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      let data = {
+        order_sn: this.order_data.order_sn
+      };
+      setInfoApi
+        .paymentOrder(data)
+        .then(res => {
+          if (res.data.code === 200) {
+            let data = JSON.stringify(res.data.data);
+            sessionStorage.setItem("payData", data);
+            this.$router.push("/mallPay");
+          } else if (res.data.code === 10003) {
+            this.defined.removeToken();
+            Toast("身份验证已过期，请重新登录");
+            this.$router.push("/login");
+          } else {
+            Toast(res.data.msg);
+          }
+        })
+        .catch(err => console.log(err));
+    },
     getData() {
       let params = {
         order_sn: this.order_sn
@@ -115,13 +135,10 @@ export default {
       getInfoApi.getOrderDetail(params).then(res => {
         if (res.data.code === 200) {
           this.order_data = res.data.data;
-          this.total=parseInt(this.order_data.order_amount)*100;
-          console.log(this.order_data);
+          this.total = parseInt(this.order_data.order_amount) * 100;
           this.order_status.forEach(el => {
             if (el.id == this.order_data.order_status) {
               this.status = el.name;
-            }else{
-              this.status = "订单已处理";
             }
           });
           this.show = true;
@@ -145,7 +162,7 @@ export default {
   },
   components: {
     Head,
-    [Icon.name]:Icon
+    [Icon.name]: Icon
   }
 };
 </script>
@@ -221,7 +238,7 @@ export default {
           flex-direction: column;
           justify-content: space-between;
           height: 160px;
-          padding:0 20px;
+          padding: 0 20px;
           .title {
             font-size: 28px;
             color: #333;

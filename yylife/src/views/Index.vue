@@ -25,7 +25,7 @@
         <Sign></Sign>
         <!-- 签到弹出层 -->
         <!-- banner轮播 -->
-        <Banner :position_id="1"></Banner>
+        <Banner></Banner>
         <!-- banner轮播 -->
         <!-- 导航栏 -->
         <ul class="nav">
@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import Banner from "@/components/Swiper";
+import Banner from "@/components/Banner";
 import Swiper from "swiper";
 import flow from "@/filters/flow.js";
 import Share from "@/components/Share";

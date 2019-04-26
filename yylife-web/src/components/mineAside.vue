@@ -69,7 +69,7 @@ export default {
         {
           aside_name: "帮助中心",
           path: "Help"
-        }
+        },
       ],
       i: 0
     };

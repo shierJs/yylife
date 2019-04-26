@@ -292,10 +292,17 @@ export default {
           id: 6
         },
         {
-          name: "12000元",
+          name: "12000元以上",
           monthly_pay_small: 12000,
           monthly_pay_big: "",
           id: 7
+        },
+        {
+          name: "面议",
+          monthly_pay_small: "",
+          monthly_pay_big: "",
+          discuss:"discuss",
+          id: 8
         }
       ], //薪资
       areaList: [], //区域
@@ -349,6 +356,7 @@ export default {
       hotList: [],
       show: false,
       keyword:"",
+      discuss:"",
     };
   },
   mounted() {
@@ -387,7 +395,8 @@ export default {
         area_id: this.areaId,
         monthly_pay_small: this.salary_small,
         monthly_pay_big: this.salary_big,
-        keyword:this.keyword
+        keyword:this.keyword,
+        discuss:this.discuss
       };
       getInfoApi
         .getJobList(params)
@@ -487,9 +496,17 @@ export default {
     },
     changeSalary(i) {
       this.salaryId = this.salarys[i].id;
-      this.salary_small = this.salarys[i].monthly_pay_small;
+      if(this.salaryId == 8){
+        this.discuss = this.salarys[i].discuss;
+        this.salary_small="";
+        this.salary_big="";
+        this.getList();
+      }else{
+        this.salary_small = this.salarys[i].monthly_pay_small;
       this.salary_big = this.salarys[i].monthly_pay_big;
+      this.discuss="";
       this.getList();
+      }
     },
     changeDegree(i) {
       this.degreeId = this.education[i].id;

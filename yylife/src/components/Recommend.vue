@@ -7,7 +7,7 @@
         <h4>本周推荐</h4>
       </div>
       <!-- 导航栏 -->
-      <div class="tabs swiper-container">
+      <div class="tabs swiper-tabs">
         <div class="swiper-wrapper">
           <div
             class="tab swiper-slide"
@@ -654,7 +654,7 @@ export default {
     }
   },
   mounted() {
-    new Swiper(".swiper-container", {
+    new Swiper(".swiper-tabs", {
       slidesPerView: 3,
       slidesPerGroup: 3,
       observer: true, //修改swiper自己或子元素时，自动初始化swiper

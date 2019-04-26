@@ -16,7 +16,7 @@
           <ul class="list">
             <li class="item">
               <span class="label">我的金币</span>
-              <Tooltip content="点击去充值" placement="right">
+              <Tooltip content="点击去充值" placement="right" :always="true">
                 <span class="gold" @click="$router.push(`/recharge/${user.gold_account}`)">{{user.gold_account}}</span>
             </Tooltip>
             </li>
@@ -103,11 +103,7 @@ export default {
       border-right: 1px dashed #b4a078;
       .top {
         span {
-          display: inline-block;
-          font-size: 16px;
-          vertical-align: top;
-        }
-        span:first-child {
+          display:block;
           margin-right: 40px;
           background: #fff;
           border: 1px solid #b4a078;

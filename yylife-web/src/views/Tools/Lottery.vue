@@ -104,7 +104,9 @@
           <i class="iconfont icon-guanbi1" @click="endi=false"></i>
           <div class="content">
             <i class="iconfont icon-duihao"></i>
-            <h5 v-if="prizeList[prize].reward_type != 0">恭喜您获得{{prizeList[prize].name}}{{prizeList[prize].prize}}</h5>
+            <h5
+              v-if="prizeList[prize].reward_type != 0"
+            >恭喜您获得{{prizeList[prize].name}}{{prizeList[prize].prize}}</h5>
             <h5 v-else>{{prizeList[prize].name}}</h5>
             <p
               class="aa"
@@ -151,62 +153,62 @@ export default {
       item: [],
       itemActive: [],
       luckyList: [
-        {
-          draw_name: "五等奖",
-          prize: "金币",
-          create_time: "2019-03-26 11:04:44",
-          prize_num: 1,
-          mobile: "150****2824"
-        },
-        {
-          draw_name: "鼓励奖",
-          prize: "2积分",
-          create_time: "2019-03-26 11:04:07",
-          prize_num: 1,
-          mobile: "159****8056"
-        },
-        {
-          draw_name: "鼓励奖",
-          prize: "2积分",
-          create_time: "2019-03-26 11:04:01",
-          prize_num: 1,
-          mobile: "183****0783"
-        },
-        {
-          draw_name: "鼓励奖",
-          prize: "2积分",
-          create_time: "2019-03-26 11:03:40",
-          prize_num: 1,
-          mobile: "188****3040"
-        },
-        {
-          draw_name: "五等奖",
-          prize: "金币",
-          create_time: "2019-03-26 11:03:32",
-          prize_num: 1,
-          mobile: "159****8056"
-        },
-        {
-          draw_name: "鼓励奖",
-          prize: "2积分",
-          create_time: "2019-03-26 11:03:24",
-          prize_num: 1,
-          mobile: "183****0783"
-        },
-        {
-          draw_name: "二等奖",
-          prize: "电动牙刷",
-          create_time: "2019-03-26 11:03:03",
-          prize_num: 1,
-          mobile: "147****2344"
-        },
-        {
-          draw_name: "四等奖",
-          prize: "牙刷",
-          create_time: "2019-03-26 11:02:47",
-          prize_num: 1,
-          mobile: "138****6590"
-        }
+        // {
+        //   draw_name: "五等奖",
+        //   prize: "金币",
+        //   create_time: "2019-03-26 11:04:44",
+        //   prize_num: 1,
+        //   mobile: "150****2824"
+        // },
+        // {
+        //   draw_name: "鼓励奖",
+        //   prize: "2积分",
+        //   create_time: "2019-03-26 11:04:07",
+        //   prize_num: 1,
+        //   mobile: "159****8056"
+        // },
+        // {
+        //   draw_name: "鼓励奖",
+        //   prize: "2积分",
+        //   create_time: "2019-03-26 11:04:01",
+        //   prize_num: 1,
+        //   mobile: "183****0783"
+        // },
+        // {
+        //   draw_name: "鼓励奖",
+        //   prize: "2积分",
+        //   create_time: "2019-03-26 11:03:40",
+        //   prize_num: 1,
+        //   mobile: "188****3040"
+        // },
+        // {
+        //   draw_name: "五等奖",
+        //   prize: "金币",
+        //   create_time: "2019-03-26 11:03:32",
+        //   prize_num: 1,
+        //   mobile: "159****8056"
+        // },
+        // {
+        //   draw_name: "鼓励奖",
+        //   prize: "2积分",
+        //   create_time: "2019-03-26 11:03:24",
+        //   prize_num: 1,
+        //   mobile: "183****0783"
+        // },
+        // {
+        //   draw_name: "二等奖",
+        //   prize: "电动牙刷",
+        //   create_time: "2019-03-26 11:03:03",
+        //   prize_num: 1,
+        //   mobile: "147****2344"
+        // },
+        // {
+        //   draw_name: "四等奖",
+        //   prize: "牙刷",
+        //   create_time: "2019-03-26 11:02:47",
+        //   prize_num: 1,
+        //   mobile: "138****6590"
+        // }
       ],
       prizeList: [
         "iphoneX",
@@ -233,8 +235,8 @@ export default {
       showInfo: false,
       info: {},
       showMyList: false,
-      prizeData:{},
-      count:10,
+      prizeData: {},
+      count: 10
     };
   },
   created() {
@@ -246,15 +248,15 @@ export default {
   mounted() {
     clearInterval(this.timer1);
     this.shine();
-    new Swiper(".swiper-lucky", {
-      observer: true, //修改swiper自己或子元素时，自动初始化swiper
-      observeParents: true, //修改swiper的父元素时，自动初始化swiper
-      autoplay: 2000,
-      direction: "vertical",
-      height: 40, //你的slide高度
-      loop: true,
-      loopAdditionalSlides: 7,
-      speed: 1000
+      var swiperLuck=new Swiper(".swiper-lucky", {
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        autoplay: 2000,
+        direction: "vertical",
+        height: 40, //你的slide高度
+        loop: true,
+        loopAdditionalSlides: 5,
+        speed: 1000
     });
   },
   beforeDestroy() {
@@ -282,7 +284,6 @@ export default {
         setInfoApi
           .setLottery()
           .then(res => {
-            ;
             if (res.data.code === 200) {
               let id = res.data.data.id;
               let i = 0;
@@ -291,12 +292,11 @@ export default {
                   i = index;
                 }
               });
-              this.prizeData=res.data.data;
+              this.prizeData = res.data.data;
               this.info.points_account = this.info.points_account - 10;
               this.prize = i;
               resolve();
             } else if (res.data.code === 10003) {
-              
               this.defined.removeToken();
               this.$router.push("/log/0");
             } else {
@@ -311,9 +311,9 @@ export default {
       }
     },
     afterLottery() {
-      if(this.prizeData.reward_type == 1){
-        this.info.points_account+=this.prizeData.amount;
-      };
+      if (this.prizeData.reward_type == 1) {
+        this.info.points_account += this.prizeData.amount;
+      }
       this.endi = true;
     },
     again() {
@@ -405,10 +405,9 @@ export default {
       getInfoApi
         .getActivityDraw()
         .then(res => {
-          ;
           if (res.data.code === 200) {
             let list = res.data.data;
-            this.count=res.data.number;
+            this.count = res.data.number;
             list.forEach(el => {
               this.item.push(el.img_1);
               this.itemActive.push(el.img_2);
@@ -424,7 +423,6 @@ export default {
       getInfoApi
         .getActivityDrawRecord()
         .then(res => {
-          ;
           if (res.data.code === 200) {
             this.luckyList = res.data.data;
           } else {
@@ -447,12 +445,10 @@ export default {
       getInfoApi
         .getMyActivityDrawRecord()
         .then(res => {
-          ;
           if (res.data.code === 200) {
             this.myList = res.data.data;
             this.showMyList = true;
           } else if (res.data.code === 10003) {
-            
             this.defined.removeToken();
             this.$router.push("/log/0");
           } else {
@@ -471,7 +467,7 @@ export default {
     }
   },
   components: {
-    Head, 
+    Head,
     Foot
   }
 };
@@ -597,7 +593,7 @@ export default {
           color: #b4a078;
           border-bottom: 1px solid #ccc;
           text-align: center;
-          width:350px;
+          width: 350px;
           span {
             font-size: 14px;
           }

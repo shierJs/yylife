@@ -142,13 +142,6 @@ export default {
         ],
         label: [
           {
-            required: true,
-            type: "array",
-            min: 0,
-            message: "请选择服务标签",
-            trigger: "change"
-          },
-          {
             type: "array",
             max: 10,
             message: "最多只能选择10个标签",

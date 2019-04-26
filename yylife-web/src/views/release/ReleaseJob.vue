@@ -97,6 +97,7 @@
                 >
                   <span slot="append">元/每月</span>
                 </i-input>
+                <span>至</span>
                 <i-input
                   v-model="formValidate.Wmax"
                   placeholder="最高月薪"

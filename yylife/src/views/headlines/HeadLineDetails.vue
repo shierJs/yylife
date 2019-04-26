@@ -31,7 +31,7 @@ export default {
     return {
       id: 0,
       data: "",
-      copyUrl: data.title+window.location.href+'更多精彩资讯内容尽在沂源生活'
+      copyUrl:window.location.href
     };
   },
   mounted() {

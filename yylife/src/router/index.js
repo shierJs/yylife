@@ -421,7 +421,7 @@ export default new Router({
       }
     },
     {
-      path: '/mallPayOrder',
+      path: '/mallPayOrder/:id',
       name: 'mallPayOrder',
       component: () => import('@/views/mall/mallPayOrder'), // 商城购物车
       meta: {

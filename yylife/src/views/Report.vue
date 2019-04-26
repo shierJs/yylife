@@ -65,7 +65,7 @@ export default {
       setInfoApi.reportImg(data).then(res=>{
         ;
         if(res.data.code===200){
-          Toast(res.data.msg);
+          Toast("图片上传成功");
           this.imgSrc.push(res.data.src);
         }
       }).catch(err=>this.$router.push('/notFound'));

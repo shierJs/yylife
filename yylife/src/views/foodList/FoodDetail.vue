@@ -19,8 +19,10 @@
         <div class="item">
           <div class="title">
             <img v-lazy="img" :key="img" alt @click="preview">
-            <h3>{{data.shop_name}}</h3>
-            <span>{{data.intro}}</span>
+            <div class="modals">
+              <h3>{{data.shop_name}}</h3>
+              <span>{{data.intro}}</span>
+            </div>
           </div>
           <div class="item-wrap">
             <div class="price-box">
@@ -71,7 +73,7 @@ export default {
       imgSrc: [],
       data: {},
       img: "",
-      copyUrl:'沂源美食'+data.shop_name+'请戳'+window.location.href
+      copyUrl:window.location.href
     };
   },
   methods: {
@@ -117,7 +119,7 @@ export default {
                 return this.imgSrc.push(el.img);
               });
               this.img = this.imgSrc[0];
-              this.copyUrl='沂源美食'+this.data.shop_name+'请戳'+window.location.href;
+              this.copyUrl='沂源美食-['+this.data.shop_name+']-请戳'+window.location.href;
               this.show = true;
             }
           } else {
@@ -125,7 +127,12 @@ export default {
             this.$router.push("/");
           }
         })
-        .catch(err => this.$router.push("/notFound"));
+        .catch(err => 
+          {
+            console.log(err);
+            this.$router.push("/notFound")
+          }
+        );
     },
     collect() {
       if (this.defined.access_token == "") {
@@ -244,24 +251,27 @@ export default {
         top: 0;
         left: 0;
       }
-      h3,
-      span {
+      .modals{
         position: absolute;
         z-index: 10;
-        color: #333;
-        left: 20px;
+        bottom:0;
+        font-size:26px;
+        background:rgba(255,255,255,.6);
       }
-      h3 {
-        bottom: 60px;
-        font-weight: normal;
-        font-size: 30px;
-      }
+      h3,
       span {
-        bottom: 20px;
+        display: block;
+        color: #333;
+        margin-left: 20px;
         width:100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space:nowrap;
+        font-size:28px;
+      }
+      h3 {
+        font-weight: normal;
+        font-size: 30px;
       }
     }
     .item-wrap {

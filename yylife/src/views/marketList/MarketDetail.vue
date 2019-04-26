@@ -88,7 +88,7 @@ export default {
       used_id: 1,
       data: {},
       phone: true,
-      copyUrl: "闲置二手"+data.used_title+window.location.href
+      copyUrl:window.location.href
     };
   },
   mounted() {
@@ -112,7 +112,7 @@ export default {
               this.data.time = formateTime(
                 parseInt(this.data.publish_time) * 1000
               );
-              this.copyUrl = "闲置二手"+this.data.used_title+window.location.href
+              this.copyUrl = "闲置二手-["+this.data.used_title+']-去沂源生活二手市场了解更多'+window.location.href
               this.show = true;
             }else{
               this.$router.push("/");

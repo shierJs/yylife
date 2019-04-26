@@ -170,11 +170,18 @@ export default {
           id: 5
         },
         {
-          name: "12000元",
+          name: "12000元以上",
           monthly_pay_small: 12000,
           monthly_pay_big: "",
           id: 6
-        }
+        },
+        {
+          name: "面议",
+          monthly_pay_small: 12000,
+          monthly_pay_big: "",
+          discuss:"discuss",
+          id: 7
+        },
       ],
       typeList: [
         {
@@ -200,6 +207,7 @@ export default {
       none: false,
       timer:null,
       keyword:'',
+      discuss:'',
     };
   },
   methods: {
@@ -243,9 +251,18 @@ export default {
       this.getList();
     },
     changeSalary(v) {
-      this.small_salary = this.salarys[v].monthly_pay_small;
-      this.big_salary = this.salarys[v].monthly_pay_big;
-      this.getList();
+      console.log(v);
+      if(v === 7){
+        this.discuss=this.salarys[v].discuss;
+        this.small_salary = "";
+        this.big_salary = "";
+        this.getList();
+      }else{
+        this.small_salary = this.salarys[v].monthly_pay_small;
+        this.big_salary = this.salarys[v].monthly_pay_big;
+        this.discuss="";
+        this.getList();
+      }
     },
     changeType(v) {
       this.typeId = v;
@@ -266,6 +283,7 @@ export default {
         monthly_pay_small: this.small_salary,
         monthly_pay_big: this.big_salary,
         keyword:this.keyword,
+        discuss:this.discuss,
       };
       getInfoApi
         .getJobList(params)
@@ -306,7 +324,8 @@ export default {
         cate_id: this.cateId,
         area_id: this.areaId,
         monthly_pay_small: this.small_salary,
-        monthly_pay_big: this.big_salary
+        monthly_pay_big: this.big_salary,
+        discuss:this.discuss,
       };
       getInfoApi
         .getJobList(params)

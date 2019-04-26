@@ -110,7 +110,7 @@ import setInfoApi from "@/api/setInfo";
 export default {
   data() {
     return {
-      copyUrl: "低价好物都在沂源生活"+window.location.href,
+      copyUrl: "低价好物都在沂源生活" + window.location.href,
       goods_data: {},
       shop: {},
       title: "商品详情",
@@ -158,15 +158,19 @@ export default {
       getInfoApi
         .getMallGoods(params)
         .then(res => {
-          ;
           if (res.data.code === 200) {
             this.goods_data = res.data.data;
             this.shop = this.goods_data.shop;
+            this.copyUrl =
+              "我在沂源生活-来疯购商城-发现了[" +
+              this.goods_data.goods_name +
+              "]" +
+              window.location.href;
             this.setData();
-          }else if(res.data.code === 10005){
+          } else if (res.data.code === 10005) {
             Toast(res.data.msg);
-            this.$router.push('/');
-          }else{
+            this.$router.push("/");
+          } else {
             Toast(res.data.msg);
           }
         })
@@ -178,11 +182,13 @@ export default {
       this.shop_price = this.goods_data.shop_price;
       this.market_price = this.goods_data.market_price;
       this.sku.list[0].price = parseInt(this.shop_price) * 100;
+      this.sku.list[0].stock_num = this.goods_data.store_count;
+      this.sku.hide_stock = false;
       this.getSpec(this.goods_data);
-      if(this.goods_data.spec_goods_price.length){
-        this.item_id=-1;
-      }else{
-        this.item_id="";
+      if (this.goods_data.spec_goods_price.length) {
+        this.item_id = -1;
+      } else {
+        this.item_id = "";
       }
       this.show = true;
     },
@@ -228,35 +234,37 @@ export default {
       let arrData = this.spec_arr.map(el => {
         return (el = JSON.stringify(el));
       });
-      specData.forEach(el => {
-        let arr = el.key_name;
-        arr = arr.map(e => {
-          return (e = JSON.stringify(e));
-        });
-        if (arrData.length == arr.length && arrData.indexOf("null") == -1) {
-          if (arr.toString() == arrData.toString()) {
-            if (el.stock != 0) {
-              this.shop_price = el.shop_price;
-              this.market_price = el.market_price;
-              this.sku.list[0].stock_num = el.stock;
-              this.item_id = el.item_id;
-              this.sku.hide_stock = false;
-              return;
-            } else {
-              this.sku.hide_stock = true;
-              Toast("当前商品库存不足");
-              this.sku.list[0].stock_num = el.stock;
+      if (specData.length) {
+        specData.forEach(el => {
+          let arr = el.key_name;
+          arr = arr.map(e => {
+            return (e = JSON.stringify(e));
+          });
+          if (arrData.length == arr.length && arrData.indexOf("null") == -1) {
+            if (arr.toString() == arrData.toString()) {
+              if (el.stock != 0) {
+                this.shop_price = el.shop_price;
+                this.market_price = el.market_price;
+                this.sku.list[0].stock_num = el.stock;
+                this.item_id = el.item_id;
+                this.sku.hide_stock = false;
+                return;
+              } else {
+                this.sku.hide_stock = true;
+                Toast("当前商品库存不足");
+                this.sku.list[0].stock_num = el.stock;
+              }
             }
+          } else {
+            this.shop_price = this.goods_data.shop_price;
+            this.market_price = this.goods_data.market_price;
+            this.sku.list[0].stock_num = this.goods_data.store_count;
+            this.sku.hide_stock = true;
+            this.item_id = -1;
           }
-        } else {
-          this.shop_price = this.goods_data.shop_price;
-          this.market_price = this.goods_data.market_price;
-          this.sku.list[0].stock_num = this.goods_data.store_count;
-          this.sku.hide_stock = true;
-          this.item_id = -1;
-        }
-      });
-      this.$forceUpdate(); //重绘
+        });
+        this.$forceUpdate(); //重绘
+      }
     },
     // 规格算法
     toCart() {
@@ -278,7 +286,7 @@ export default {
         Toast("请先去登录");
       } else {
         console.log(skuData);
-        let number=skuData.selectedNum;
+        let number = skuData.selectedNum;
         if (number == 0 || this.item_id == -1) {
           Toast("请填写正确的商品数量，选择正确的规格");
         } else {
@@ -291,9 +299,9 @@ export default {
             .toGoodsPay(data)
             .then(res => {
               if (res.data.code === 200) {
-                let data=JSON.stringify(res.data.data);
-                sessionStorage.setItem("orderData",data);
-                this.$router.push('/mallPayOrder');
+                let data = JSON.stringify(res.data.data);
+                sessionStorage.setItem("orderData", data);
+                this.$router.push("/mallPayOrder/1");
               } else if (res.data.code === 10003) {
                 Toast("身份验证已过期，请重新登录");
                 this.defined.removeToken();
@@ -312,7 +320,7 @@ export default {
         Toast("请先去登录");
       } else {
         console.log(skuData);
-        let number=skuData.selectedNum;
+        let number = skuData.selectedNum;
         if (number == 0 || this.item_id == -1) {
           Toast("请填写正确的商品数量，选择正确的规格");
         } else {
@@ -349,7 +357,7 @@ export default {
         let data = {
           commentable_id: this.id,
           commentable_type: "goods",
-          title:this.goods_data.goods_name
+          title: this.goods_data.goods_name
         };
         setInfoApi
           .collect(data)
@@ -507,7 +515,7 @@ export default {
     .wrapper {
       width: 100%;
       overflow: hidden;
-      padding:0 20px;
+      padding: 0 20px;
     }
     .wrapper /deep/ p img {
       max-width: 100%;

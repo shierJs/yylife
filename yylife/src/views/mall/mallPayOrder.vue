@@ -62,7 +62,7 @@ import Head from "@/components/Head";
 import flow from "@/filters/flow.js";
 import getInfoApi from "@/api/getInfo";
 import setInfoApi from "@/api/setInfo";
-import { Toast,Icon } from "vant";
+import { Toast, Icon } from "vant";
 export default {
   data() {
     return {
@@ -75,8 +75,26 @@ export default {
     };
   },
   mounted() {
-    this.getOrderList();
     this.getAddress();
+    let id = parseInt(this.$route.params.id);
+    if (id) {
+      console.log(id);
+      let data = JSON.parse(sessionStorage.getItem("orderData"));
+      if (!data) {
+        Toast("服务器出错了，请稍后重试");
+        this.$router.push("/");
+      } else {
+        this.order_data = data;
+        this.total =
+          (parseInt(this.order_data.global_value) +
+            parseInt(this.order_data.postage)) *
+          100;
+        this.buy_id = 1;
+        this.show = true;
+      }
+    } else {
+      this.getOrderList();
+    }
   },
   methods: {
     onSubmit() {
@@ -99,7 +117,7 @@ export default {
             } else if (res.data.code === 10003) {
               this.defined.removeToken();
               Toast("身份验证已过期，请重新登录");
-              this.$router.push("/");
+              this.$router.push("/login");
             } else {
               Toast(res.data.msg);
             }
@@ -155,9 +173,13 @@ export default {
             let data = JSON.parse(sessionStorage.getItem("orderData"));
             if (!data) {
               Toast(res.data.msg);
-              this.$router.push('/');
+              this.$router.push("/");
             } else {
               this.order_data = data;
+              this.total =
+                (parseInt(this.order_data.global_value) +
+                  parseInt(this.order_data.postage)) *
+                100;
               this.buy_id = 1;
               this.show = true;
             }
@@ -189,7 +211,7 @@ export default {
   },
   components: {
     Head,
-    [Icon.name]:Icon
+    [Icon.name]: Icon
   }
 };
 </script>
@@ -236,18 +258,18 @@ export default {
         padding-left: 20px;
         justify-content: space-between;
         height: 160px;
-        width:72%;
+        width: 72%;
         .title {
           font-size: 28px;
           color: #333;
-          max-width:100%;
+          max-width: 100%;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
         .desc {
           color: #999999;
-          max-width:100%;
+          max-width: 100%;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;

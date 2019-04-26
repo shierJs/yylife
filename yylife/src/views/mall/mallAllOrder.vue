@@ -252,7 +252,6 @@ export default {
     },
     getOrderList() {
       this.page = 1;
-      this.finished = false;
       this.dataList = [];
       let params = {
         order_status: this.status,
@@ -265,6 +264,12 @@ export default {
             if (res.data.data.length) {
               this.dataList = res.data.data;
               this.showOrder = true;
+              if(res.data.data.length<10){
+                console.log(1);
+                this.finished = true;
+              }else{
+                this.finished = false;
+              }
             } else {
               this.showOrder = false;
             }
@@ -309,7 +314,7 @@ export default {
             Toast(res.data.msg);
           }
         })
-        .catch(err => console.log(err));
+        .catch(err => this.showOrder = false);
     },
     detail(id) {
       this.$router.push(`/orderDetail/${id}`);

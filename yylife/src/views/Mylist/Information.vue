@@ -12,6 +12,7 @@
               :on-success="avatarSuccess"
               :on-error="err"
               :show-file-list="false"
+              :before-upload="onRead"
               :headers="headers"
             >
               <img v-if="user.head_portrait" :src="user.head_portrait" class="avatar">
@@ -81,7 +82,7 @@ export default {
         });
     },
     onRead(file) {
-      this.src = file.content;
+      Toast("图片上传中");
     },
     err(err,file){
       alert(JSON.stringify(file));
@@ -94,6 +95,8 @@ export default {
         Toast("身份已过期，请重新登录");
         this.defined.removeToken();
         this.$router.push("/");
+      }else{
+        Toast(res.data.msg);
       }
     },
     getUser() {

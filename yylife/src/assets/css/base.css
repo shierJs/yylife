@@ -1436,6 +1436,10 @@ img {
 .mall .list-wtap .van-list .van-cell{
   width:348px;
 }
+.el-scrollbar .el-scrollbar__wrap{
+  height:auto !important;
+  max-height:800px;
+}
 .el-cascader-menus .el-cascader-menu{
   min-width:250px;
   height:auto !important;

@@ -51,7 +51,7 @@ import { mapState, mapMutations } from "vuex";
 import Foot from "@/components/Foot";
 import getInfoApi from "@/api/getInfo";
 import setInfoApi from "@/api/setInfo";
-import {  Toast,Icon,Checkbox, CheckboxGroup } from 'vant';
+import { Toast, Icon, Checkbox, CheckboxGroup } from "vant";
 export default {
   data() {
     return {
@@ -70,7 +70,6 @@ export default {
     getList() {
       getInfoApi.getCartList().then(res => {
         if (res.data.code === 200) {
-          ;
           if (res.data.data.length) {
             this.list = res.data.data;
             this.list.forEach(el => {
@@ -124,16 +123,27 @@ export default {
       }
     },
     onSubmit() {
-      this.$router.push({
-        name: "mallPayOrder"
-      });
+      this.$router.push("mallPayOrder/0");
     },
     del(index) {
-      this.list.splice(index, 1);
-      this.calcItem();
-      if (this.list.length == 0) {
-        this.show = false;
-      }
+      let data = {
+        id: this.list[index].id
+      };
+      setInfoApi.deleteCart(data).then(res => {
+        if (res.data.code === 200) {
+          this.list.splice(index, 1);
+          this.calcItem();
+          Toast(res.data.msg);
+          if (this.list.length == 0) {
+            this.show = false;
+          }
+        } else if (res.data.code === 10003) {
+          this.defined.removeToken();
+          this.$router.push("/login");
+        } else {
+          Toast(res.data.msg);
+        }
+      });
     },
     checkState(index) {
       let id = this.list[index].id;
@@ -158,9 +168,7 @@ export default {
         };
         setInfoApi
           .updateSelectCart(data)
-          .then(res => {
-            ;
-          })
+          .then(res => {})
           .catch(err => console.log(err));
       } else {
         let data = {
@@ -169,15 +177,13 @@ export default {
         };
         setInfoApi
           .updateSelectCart(data)
-          .then(res => {
-            ;
-          })
+          .then(res => {})
           .catch(err => console.log(err));
       }
     },
     allCheckedState() {
       let i = 1;
-      this.selIds=[];
+      this.selIds = [];
       if (this.allChecked) {
         this.list.forEach(item => {
           item.checked = true;
@@ -218,9 +224,9 @@ export default {
   components: {
     Head,
     Foot,
-    [Icon.name]:Icon,
-    [Checkbox.name]:Checkbox,
-    [CheckboxGroup.name]:CheckboxGroup,
+    [Icon.name]: Icon,
+    [Checkbox.name]: Checkbox,
+    [CheckboxGroup.name]: CheckboxGroup
   }
 };
 </script>
